@@ -273,7 +273,7 @@ class LanguageSwitch
             : str($locale)->upper()->toString();
     }
 
-    public function setMaxHeight(string $height): string
+    public function setMaxHeight(string $height): static
     {
         $this->maxHeight = $height;
 
