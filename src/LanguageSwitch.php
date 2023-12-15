@@ -39,7 +39,7 @@ class LanguageSwitch
 
     protected bool | Closure $visibleOutsidePanels = false;
 
-    protected string $maxHeight;
+    protected string $maxHeight = 'max-content';
 
     protected Closure | string $renderHook = 'panels::global-search.after';
 
@@ -160,6 +160,13 @@ class LanguageSwitch
         return $this;
     }
 
+    public function maxHeight(string $height): static
+    {
+        $this->maxHeight = $height;
+
+        return $this;
+    }
+
     public function getDisplayLocale(): string
     {
         return (string) $this->evaluate($this->displayLocale);
@@ -271,13 +278,6 @@ class LanguageSwitch
         return str($locale)->length() > 2
             ? str($locale)->substr(0, 2)->upper()->toString()
             : str($locale)->upper()->toString();
-    }
-
-    public function setMaxHeight(string $height): static
-    {
-        $this->maxHeight = $height;
-
-        return $this;
     }
 
     public function getMaxHeight(): string

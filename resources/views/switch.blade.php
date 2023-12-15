@@ -1,4 +1,4 @@
-<x-filament::dropdown teleport :placement="$placement" :width="$isFlagsOnly ? 'flags-only' : 'fls-dropdown-width'" :max-height="$maxHeight ? $maxHeight : 'max-content'" class="fi-dropdown fi-user-menu">
+<x-filament::dropdown teleport :placement="$placement" :width="$isFlagsOnly ? 'flags-only' : 'fls-dropdown-width'" :max-height="$maxHeight" class="fi-dropdown fi-user-menu">
     <x-slot name="trigger">
         <div @class([
             'flex items-center justify-center w-9 h-9 language-switch-trigger text-primary-600 bg-primary-500/10',
