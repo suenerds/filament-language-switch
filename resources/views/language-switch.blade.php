@@ -6,12 +6,13 @@
     $hasFlags = filled($languageSwitch->getFlags());
     $isVisibleOutsidePanels = $languageSwitch->isVisibleOutsidePanels();
     $outsidePanelsPlacement = $languageSwitch->getOutsidePanelPlacement()->value;
-    $placement = match(true){
+    $placement = match (true) {
         $outsidePanelsPlacement === 'top-center' && $isFlagsOnly => 'bottom',
         $outsidePanelsPlacement === 'bottom-center' && $isFlagsOnly => 'top',
-        ! $isVisibleOutsidePanels && $isFlagsOnly=> 'bottom',
+        !$isVisibleOutsidePanels && $isFlagsOnly => 'bottom',
         default => 'bottom-end',
     };
+    $maxHeight = $languageSwitch->getMaxHeight();
 @endphp
 <div>
     @if ($isVisibleOutsidePanels)

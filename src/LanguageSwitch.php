@@ -39,6 +39,8 @@ class LanguageSwitch
 
     protected bool | Closure $visibleOutsidePanels = false;
 
+    protected string $maxHeight;
+
     protected Closure | string $renderHook = 'panels::global-search.after';
 
     public static function make(): static
@@ -82,14 +84,14 @@ class LanguageSwitch
         return $this;
     }
 
-    public function displayLocale(string $locale = null): static
+    public function displayLocale(?string $locale = null): static
     {
         $this->displayLocale = $locale ?? app()->getLocale();
 
         return $this;
     }
 
-    public function outsidePanelRoutes(array | Closure $routes = null): static
+    public function outsidePanelRoutes(array | Closure | null $routes = null): static
     {
         $this->outsidePanelRoutes = $routes ?? [
             'auth.login',
@@ -269,5 +271,17 @@ class LanguageSwitch
         return str($locale)->length() > 2
             ? str($locale)->substr(0, 2)->upper()->toString()
             : str($locale)->upper()->toString();
+    }
+
+    public function setMaxHeight(string $height): string
+    {
+        $this->maxHeight = $height;
+
+        return $this;
+    }
+
+    public function getMaxHeight(): string
+    {
+        return $this->maxHeight;
     }
 }
