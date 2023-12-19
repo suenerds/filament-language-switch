@@ -9,7 +9,7 @@
     $placement = match (true) {
         $outsidePanelsPlacement === 'top-center' && $isFlagsOnly => 'bottom',
         $outsidePanelsPlacement === 'bottom-center' && $isFlagsOnly => 'top',
-        ! $isVisibleOutsidePanels && $isFlagsOnly => 'bottom',
+        !$isVisibleOutsidePanels && $isFlagsOnly => 'bottom',
         default => 'bottom-end',
     };
     $maxHeight = $languageSwitch->getMaxHeight();
@@ -17,16 +17,14 @@
 
 <div>
     @if ($isVisibleOutsidePanels)
-        <div
-            @class([
-                'fls-display-on fixed z-50 flex w-full p-4',
-                'top-0' => str_contains($outsidePanelsPlacement, 'top'),
-                'bottom-0' => str_contains($outsidePanelsPlacement, 'bottom'),
-                'justify-start' => str_contains($outsidePanelsPlacement, 'left'),
-                'justify-end' => str_contains($outsidePanelsPlacement, 'right'),
-                'justify-center' => str_contains($outsidePanelsPlacement, 'center'),
-            ])
-        >
+        <div @class([
+            'fls-display-on fixed z-50 flex w-full p-4',
+            'top-0' => str_contains($outsidePanelsPlacement, 'top'),
+            'bottom-0' => str_contains($outsidePanelsPlacement, 'bottom'),
+            'justify-start' => str_contains($outsidePanelsPlacement, 'left'),
+            'justify-end' => str_contains($outsidePanelsPlacement, 'right'),
+            'justify-center' => str_contains($outsidePanelsPlacement, 'center'),
+        ])>
             <div class="rounded-lg bg-gray-50 dark:bg-gray-950">
                 @include('filament-language-switch::switch')
             </div>
